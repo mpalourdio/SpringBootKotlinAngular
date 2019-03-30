@@ -7,15 +7,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular.frontcontroller;
+package com.mpalourdio.projects.springbootkotlinangular.frontcontroller
 
-public class FrontControllerException extends RuntimeException {
+internal class FrontControllerException : RuntimeException {
 
-    public FrontControllerException(String message) {
-        super(message);
-    }
+    constructor(message: String) : super(message)
 
-    public FrontControllerException(String message, Throwable throwable) {
-        super(message, throwable);
-    }
+    constructor(message: String, throwable: Throwable) : super(message, throwable)
 }
