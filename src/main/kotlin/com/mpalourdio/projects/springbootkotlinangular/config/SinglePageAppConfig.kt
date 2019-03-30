@@ -22,7 +22,6 @@ import org.springframework.web.servlet.resource.PathResourceResolver
 import java.io.IOException
 import java.util.*
 
-
 @Configuration
 class SinglePageAppConfig(
         resourceProperties: ResourceProperties,
