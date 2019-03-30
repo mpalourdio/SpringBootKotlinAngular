@@ -81,7 +81,6 @@ class SinglePageAppConfig(
         }
 
         private fun resourceExistsAndIsReadable(resource: Resource): Boolean {
-            Objects.requireNonNull(resource, "resource cannot be null")
             return resource.exists() && resource.isReadable
         }
     }

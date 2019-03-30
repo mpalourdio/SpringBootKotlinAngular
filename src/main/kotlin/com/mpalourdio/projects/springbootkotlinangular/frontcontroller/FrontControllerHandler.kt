@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service
 import org.springframework.web.servlet.resource.TransformedResource
 import java.io.IOException
 import java.nio.charset.StandardCharsets
-import java.util.*
 
 @Service
 class FrontControllerHandler(private val serverProperties: ServerProperties) {
@@ -30,7 +29,6 @@ class FrontControllerHandler(private val serverProperties: ServerProperties) {
     }
 
     fun buildFrontControllerResource(resource: Resource): TransformedResource {
-        Objects.requireNonNull(resource, "resource cannot be null")
 
         try {
             var frontControllerContent = IOUtils.toString(resource.inputStream, FRONT_CONTROLLER_ENCODING)
