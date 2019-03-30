@@ -31,7 +31,7 @@ class SinglePageAppConfig(
 
     companion object {
         const val IGNORED_PATH = "/api"
-        const val PATH_PATTERNS = "/**"
+        private const val PATH_PATTERNS = "/**"
     }
 
     private val staticLocations: Array<String> = resourceProperties.staticLocations
