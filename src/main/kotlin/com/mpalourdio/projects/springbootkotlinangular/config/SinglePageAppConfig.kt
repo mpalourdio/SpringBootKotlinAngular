@@ -30,7 +30,7 @@ class SinglePageAppConfig(
 ) : WebMvcConfigurer {
 
     companion object {
-        const val IGNORED_PATH = "/api"
+        private const val IGNORED_PATH = "/api"
         private const val PATH_PATTERNS = "/**"
     }
 
