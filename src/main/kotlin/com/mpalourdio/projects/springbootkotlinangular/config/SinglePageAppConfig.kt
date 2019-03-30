@@ -45,7 +45,7 @@ class SinglePageAppConfig(
 
     private inner class SinglePageAppResourceResolver internal constructor() : PathResourceResolver() {
 
-        private val frontControllerResource: Resource
+        private val frontControllerResource: Resource?
 
         init {
             this.frontControllerResource = Arrays
