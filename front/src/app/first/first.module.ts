@@ -7,14 +7,21 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FirstComponent } from './components/first/first.component';
+import { FirstRoutingModule } from './first-routing.module';
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
-
-@SpringBootApplication
-class SpringBootKotlinAngularApplication
-
-fun main(args: Array<String>) {
-    runApplication<SpringBootKotlinAngularApplication>(*args)
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        FirstRoutingModule,
+    ],
+    declarations: [
+        FirstComponent,
+    ]
+})
+export class FirstModule {
 }

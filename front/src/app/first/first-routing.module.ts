@@ -7,14 +7,19 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FirstComponent } from './components/first/first.component';
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+const routes: Routes = [
+    {
+        path: '',
+        component: FirstComponent
+    }
+];
 
-@SpringBootApplication
-class SpringBootKotlinAngularApplication
-
-fun main(args: Array<String>) {
-    runApplication<SpringBootKotlinAngularApplication>(*args)
-}
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class FirstRoutingModule { }

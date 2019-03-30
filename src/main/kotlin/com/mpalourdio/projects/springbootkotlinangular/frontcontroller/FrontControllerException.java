@@ -7,14 +7,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular
+package com.mpalourdio.projects.springbootkotlinangular.frontcontroller;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+public class FrontControllerException extends RuntimeException {
 
-@SpringBootApplication
-class SpringBootKotlinAngularApplication
+    public FrontControllerException(String message) {
+        super(message);
+    }
 
-fun main(args: Array<String>) {
-    runApplication<SpringBootKotlinAngularApplication>(*args)
+    public FrontControllerException(String message, Throwable throwable) {
+        super(message, throwable);
+    }
 }

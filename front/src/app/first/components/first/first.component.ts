@@ -7,14 +7,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular
+import { Component } from '@angular/core';
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
-
-@SpringBootApplication
-class SpringBootKotlinAngularApplication
-
-fun main(args: Array<String>) {
-    runApplication<SpringBootKotlinAngularApplication>(*args)
+@Component({
+    selector: 'app-first',
+    templateUrl: './first.component.html',
+    styleUrls: ['./first.component.scss']
+})
+export class FirstComponent {
 }

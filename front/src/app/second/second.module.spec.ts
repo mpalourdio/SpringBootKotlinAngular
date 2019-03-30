@@ -7,14 +7,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular
+import { SecondModule } from './second.module';
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+describe('SecondModule', () => {
+    let secondModule: SecondModule;
 
-@SpringBootApplication
-class SpringBootKotlinAngularApplication
+    beforeEach(() => {
+        secondModule = new SecondModule();
+    });
 
-fun main(args: Array<String>) {
-    runApplication<SpringBootKotlinAngularApplication>(*args)
-}
+    it('should create an instance', () => {
+        expect(secondModule).toBeTruthy();
+    });
+});

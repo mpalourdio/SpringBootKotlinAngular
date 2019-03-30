@@ -7,15 +7,27 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.springbootkotlinangular
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
-
-@SpringBootTest
-class SpringBootKotlinAngularApplicationTests {
-
-    @Test
-    fun contextLoads() {
+const routes: Routes = [
+    {
+        path: '',
+        loadChildren: './first/first.module#FirstModule'
+    },
+    {
+        path: 'iam/a/very/long/url',
+        loadChildren: './second/second.module#SecondModule'
+    },
+    {
+        path: '**',
+        redirectTo: ''
     }
+];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+})
+export class AppRoutingModule {
 }
