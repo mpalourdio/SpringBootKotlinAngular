@@ -1,0 +1,9 @@
+target
+front/node_modules/
+front/dist
+front/coverage/
+front/.sass-cache/
+front/.tmp/
+.idea/
+*.iml
+logs
