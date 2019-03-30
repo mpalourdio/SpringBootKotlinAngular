@@ -26,7 +26,7 @@ class FrontControllerHandler(private val serverProperties: ServerProperties) {
         private const val BASE_HREF_PLACEHOLDER = "#base-href#"
         private val FRONT_CONTROLLER_ENCODING: String = StandardCharsets.UTF_8.name()
         const val URL_SEPARATOR = "/"
-        private const val FRONT_CONTROLLER = "index.html"
+        const val FRONT_CONTROLLER = "index.html"
     }
 
     fun buildFrontControllerResource(resource: Resource): TransformedResource {
