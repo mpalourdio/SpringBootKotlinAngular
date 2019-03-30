@@ -62,9 +62,7 @@ class SinglePageAppConfig(
             val resource = location.createRelative(resourcePath)
             if (resourceExistsAndIsReadable(resource)) {
                 //if the asked resource is index.html itself, we serve it with the base-href rewritten
-                return if (resourcePath.endsWith(FRONT_CONTROLLER)) {
-                    frontControllerResource
-                } else resource
+                return if (resourcePath.endsWith(FRONT_CONTROLLER)) frontControllerResource else resource
                 //here we serve js, css, etc.
             }
 
@@ -74,9 +72,7 @@ class SinglePageAppConfig(
             }
 
             //we are in the case of an angular route here, we rewrite to index.html
-            return if (resourceExistsAndIsReadable(location.createRelative(FRONT_CONTROLLER))) {
-                frontControllerResource
-            } else null
+            return if (resourceExistsAndIsReadable(location.createRelative(FRONT_CONTROLLER))) frontControllerResource else null
 
         }
 
