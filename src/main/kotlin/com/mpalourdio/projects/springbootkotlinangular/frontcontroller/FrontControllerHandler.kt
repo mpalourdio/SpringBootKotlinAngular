@@ -18,15 +18,13 @@ import org.springframework.web.servlet.resource.TransformedResource
 import java.io.IOException
 import java.nio.charset.StandardCharsets
 
+private const val BASE_HREF_PLACEHOLDER = "#base-href#"
+private val FRONT_CONTROLLER_ENCODING: String = StandardCharsets.UTF_8.name()
+internal const val URL_SEPARATOR = "/"
+internal const val FRONT_CONTROLLER = "index.html"
+
 @Service
 class FrontControllerHandler(private val serverProperties: ServerProperties) {
-
-    companion object {
-        private const val BASE_HREF_PLACEHOLDER = "#base-href#"
-        private val FRONT_CONTROLLER_ENCODING: String = StandardCharsets.UTF_8.name()
-        const val URL_SEPARATOR = "/"
-        const val FRONT_CONTROLLER = "index.html"
-    }
 
     fun buildFrontControllerResource(resource: Resource): TransformedResource {
 

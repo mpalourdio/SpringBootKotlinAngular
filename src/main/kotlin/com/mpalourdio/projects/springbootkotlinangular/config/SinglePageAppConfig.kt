@@ -9,9 +9,9 @@
 
 package com.mpalourdio.projects.springbootkotlinangular.config
 
+import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.FRONT_CONTROLLER
 import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.FrontControllerHandler
-import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.FrontControllerHandler.Companion.FRONT_CONTROLLER
-import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.FrontControllerHandler.Companion.URL_SEPARATOR
+import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.URL_SEPARATOR
 import org.springframework.boot.autoconfigure.web.ResourceProperties
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Configuration
@@ -19,8 +19,10 @@ import org.springframework.core.io.Resource
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.resource.PathResourceResolver
-import java.io.IOException
 import java.util.*
+
+internal const val IGNORED_PATH = "/api"
+private const val PATH_PATTERNS = "/**"
 
 @Configuration
 class SinglePageAppConfig(
@@ -28,11 +30,6 @@ class SinglePageAppConfig(
         private val frontControllerHandler: FrontControllerHandler,
         private val applicationContext: ApplicationContext
 ) : WebMvcConfigurer {
-
-    companion object {
-        const val IGNORED_PATH = "/api"
-        private const val PATH_PATTERNS = "/**"
-    }
 
     private val staticLocations: Array<String> = resourceProperties.staticLocations
 
@@ -43,7 +40,7 @@ class SinglePageAppConfig(
                 .addResolver(SinglePageAppResourceResolver())
     }
 
-    private inner class SinglePageAppResourceResolver internal constructor() : PathResourceResolver() {
+    private inner class SinglePageAppResourceResolver : PathResourceResolver() {
 
         private val frontControllerResource: Resource?
 
@@ -57,7 +54,6 @@ class SinglePageAppConfig(
                     .orElseGet { null }
         }
 
-        @Throws(IOException::class)
         override fun getResource(resourcePath: String, location: Resource): Resource? {
             val resource = location.createRelative(resourcePath)
             if (resourceExistsAndIsReadable(resource)) {
@@ -76,8 +72,6 @@ class SinglePageAppConfig(
 
         }
 
-        private fun resourceExistsAndIsReadable(resource: Resource): Boolean {
-            return resource.exists() && resource.isReadable
-        }
+        private fun resourceExistsAndIsReadable(resource: Resource): Boolean = resource.exists() && resource.isReadable
     }
 }

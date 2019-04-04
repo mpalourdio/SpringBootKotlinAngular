@@ -9,7 +9,7 @@
 
 package com.mpalourdio.projects.springbootkotlinangular.api
 
-import com.mpalourdio.projects.springbootkotlinangular.config.SinglePageAppConfig
+import com.mpalourdio.projects.springbootkotlinangular.config.IGNORED_PATH
 import org.apache.commons.lang3.StringUtils
 import org.springframework.boot.autoconfigure.web.ServerProperties
 import org.springframework.core.ParameterizedTypeReference
@@ -20,14 +20,14 @@ import reactor.core.publisher.Mono
 import java.util.*
 
 @RestController
-@RequestMapping(path = [SinglePageAppConfig.IGNORED_PATH])
+@RequestMapping(path = [IGNORED_PATH])
 class ApiController(private val serverProperties: ServerProperties) {
 
     private val webClient: WebClient = WebClient.create(
             "http://localhost:"
                     + serverProperties.port
                     + StringUtils.stripToEmpty(serverProperties.servlet.contextPath)
-                    + SinglePageAppConfig.IGNORED_PATH
+                    + IGNORED_PATH
     )
 
     @PostMapping(path = ["/fast"])
@@ -54,7 +54,6 @@ class ApiController(private val serverProperties: ServerProperties) {
 
     @CrossOrigin(origins = ["http://localhost:4200"], allowedHeaders = ["x-requested-with"])
     @GetMapping(path = ["/slow"])
-    @Throws(InterruptedException::class)
     fun slow(): ResponseEntity<List<String>> {
         Thread.sleep(3000)
         val results = ArrayList<String>()

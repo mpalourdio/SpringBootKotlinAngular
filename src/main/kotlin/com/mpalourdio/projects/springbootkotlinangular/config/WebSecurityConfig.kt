@@ -18,7 +18,6 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 @Configuration
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
-    @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
     }
