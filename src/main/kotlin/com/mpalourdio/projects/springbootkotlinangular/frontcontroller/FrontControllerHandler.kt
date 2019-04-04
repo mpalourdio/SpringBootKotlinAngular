@@ -27,7 +27,6 @@ internal const val FRONT_CONTROLLER = "index.html"
 class FrontControllerHandler(private val serverProperties: ServerProperties) {
 
     fun buildFrontControllerResource(resource: Resource): TransformedResource {
-
         try {
             var frontControllerContent = IOUtils.toString(resource.inputStream, FRONT_CONTROLLER_ENCODING)
             if (!frontControllerContent.contains(BASE_HREF_PLACEHOLDER)) {
