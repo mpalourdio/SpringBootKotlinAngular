@@ -23,7 +23,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     }
 
     override fun configure(web: WebSecurity) {
-        web.ignoring().antMatchers("/static/**")
+        web.ignoring().antMatchers("/public/**")
     }
 }
 
