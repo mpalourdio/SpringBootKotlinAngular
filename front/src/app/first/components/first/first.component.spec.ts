@@ -16,13 +16,13 @@ describe('FirstComponent', () => {
     let component: FirstComponent;
     let fixture: ComponentFixture<FirstComponent>;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             declarations: [FirstComponent],
             imports: [HttpClientTestingModule, FormsModule]
         })
             .compileComponents();
-    }));
+    });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(FirstComponent);
