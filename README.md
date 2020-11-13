@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/mpalourdio/SpringBootKotlinAngular.svg?branch=master)](https://travis-ci.org/mpalourdio/SpringBootKotlinAngular)
+[![Build Status](https://github.com/mpalourdio/SpringBootKotlinAngular/workflows/back/badge.svg?branch=master)](https://github.com/mpalourdio/SpringBootKotlinAngular/actions)
+[![Build Status](https://github.com/mpalourdio/SpringBootKotlinAngular/workflows/front/badge.svg?branch=master)](https://github.com/mpalourdio/SpringBootKotlinAngular/actions)
 
 
 Spring Boot 2.x + Kotlin + Angular 10.x with HTML 5 router
