@@ -12,7 +12,7 @@ package com.mpalourdio.projects.springbootkotlinangular.config
 import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.FRONT_CONTROLLER
 import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.FrontControllerHandler
 import com.mpalourdio.projects.springbootkotlinangular.frontcontroller.URL_SEPARATOR
-import org.springframework.boot.autoconfigure.web.ResourceProperties
+import org.springframework.boot.autoconfigure.web.WebProperties
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.Resource
@@ -26,12 +26,12 @@ private const val PATH_PATTERNS = "/**"
 
 @Configuration
 class SinglePageAppConfig(
-        resourceProperties: ResourceProperties,
+        webProperties: WebProperties,
         private val frontControllerHandler: FrontControllerHandler,
         private val applicationContext: ApplicationContext
 ) : WebMvcConfigurer {
 
-    private val staticLocations: Array<String> = resourceProperties.staticLocations
+    private val staticLocations: Array<String> = webProperties.resources.staticLocations
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler(PATH_PATTERNS)
