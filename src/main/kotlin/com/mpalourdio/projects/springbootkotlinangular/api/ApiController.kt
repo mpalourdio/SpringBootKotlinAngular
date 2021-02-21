@@ -44,7 +44,7 @@ class ApiController(private val serverProperties: ServerProperties) {
             .uri("/slow")
             .retrieve()
             .toEntityList(String::class.java)
-            .onErrorReturn(ResponseEntity.ok(ArrayList<String>()));
+            .onErrorReturn(ResponseEntity.ok(arrayListOf()));
     }
 
     @CrossOrigin(origins = ["http://localhost:4200"], allowedHeaders = ["x-requested-with"])
