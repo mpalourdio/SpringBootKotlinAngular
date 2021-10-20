@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17_35-jdk-alpine
+FROM eclipse-temurin:17-alpine
 RUN apk update && apk upgrade && apk add bash
 RUN adduser -D -s /bin/bash user
 WORKDIR /home/user
