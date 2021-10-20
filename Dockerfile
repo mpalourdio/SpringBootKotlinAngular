@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-slim
+FROM eclipse-temurin:17_35-jdk-alpine
 RUN apk update && apk upgrade && apk add bash
 RUN adduser -D -s /bin/bash user
 WORKDIR /home/user
