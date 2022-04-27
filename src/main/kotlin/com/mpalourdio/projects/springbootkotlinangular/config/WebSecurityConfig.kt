@@ -9,21 +9,22 @@
 
 package com.mpalourdio.projects.springbootkotlinangular.config
 
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.builders.WebSecurity
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 
 @Configuration
-class WebSecurityConfig : WebSecurityConfigurerAdapter() {
+class WebSecurityConfig {
 
-    override fun configure(http: HttpSecurity) {
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-    }
-
-    override fun configure(web: WebSecurity) {
-        web.ignoring().antMatchers("/static/**")
+    @Bean
+    @Throws(Exception::class)
+    fun filterChain(http: HttpSecurity): SecurityFilterChain? {
+        return http
+            .authorizeRequests { authorizeRequests -> authorizeRequests.antMatchers("/static/**").permitAll() }
+            .csrf { csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) }
+            .build()
     }
 }
 
