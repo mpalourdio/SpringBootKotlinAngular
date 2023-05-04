@@ -54,8 +54,8 @@
         <build.nofront>true</build.nofront>
 
         <!-- dependencies -->
-        <commons-io.version>2.9.0</commons-io.version>
-        <maven-release-plugin.version>3.0.0-M4</maven-release-plugin.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
     </properties>
 
     <profiles>
