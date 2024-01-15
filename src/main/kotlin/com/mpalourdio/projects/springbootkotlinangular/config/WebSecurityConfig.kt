@@ -24,18 +24,29 @@ class WebSecurityConfig {
 
     @Bean
     @Throws(Exception::class)
-    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
+    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain? {
+        val tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse()
+        val delegate: XorCsrfTokenRequestAttributeHandler = getXorCsrfTokenRequestAttributeHandler()
         // Use only the handle() method of XorCsrfTokenRequestAttributeHandler and the
         // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler
-        val requestHandler = CsrfTokenRequestHandler(XorCsrfTokenRequestAttributeHandler()::handle)
+        val requestHandler = CsrfTokenRequestHandler(delegate::handle)
         http {
             csrf {
-                csrfTokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse()
+                csrfTokenRepository = tokenRepository
                 csrfTokenRequestHandler = requestHandler
             }
         }
 
         return http.build()
+    }
+
+    private fun getXorCsrfTokenRequestAttributeHandler(): XorCsrfTokenRequestAttributeHandler {
+        val delegate = XorCsrfTokenRequestAttributeHandler()
+        // By setting the csrfRequestAttributeName to null, the CsrfToken must first be loaded to determine what attribute name to use.
+        // This causes the CsrfToken to be loaded on every request.
+        // Another solution would have been to create a OncePerRequestFilter to handle CrsfFilter.
+        delegate.setCsrfRequestAttributeName(null)
+        return delegate
     }
 
     @Bean
