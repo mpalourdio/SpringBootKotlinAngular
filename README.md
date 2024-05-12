@@ -1,6 +1,5 @@
-[![Build Status](https://github.com/mpalourdio/SpringBootKotlinAngular/workflows/back/badge.svg?branch=master)](https://github.com/mpalourdio/SpringBootKotlinAngular/actions)
-[![Build Status](https://github.com/mpalourdio/SpringBootKotlinAngular/workflows/front/badge.svg?branch=master)](https://github.com/mpalourdio/SpringBootKotlinAngular/actions)
-
+[![back](https://github.com/mpalourdio/SpringBootKotlinAngular/actions/workflows/back.yml/badge.svg)](https://github.com/mpalourdio/SpringBootKotlinAngular/actions/workflows/back.yml)
+[![front](https://github.com/mpalourdio/SpringBootKotlinAngular/actions/workflows/front.yml/badge.svg)](https://github.com/mpalourdio/SpringBootKotlinAngular/actions/workflows/front.yml)
 
 Spring Boot 3.x + Kotlin + Angular with HTML 5 router
 ====================================================
