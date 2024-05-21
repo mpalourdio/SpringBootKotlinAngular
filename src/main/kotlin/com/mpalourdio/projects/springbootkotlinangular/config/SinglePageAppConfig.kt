@@ -24,20 +24,20 @@ import java.util.*
 internal const val IGNORED_PATH = "/api"
 private const val PATH_PATTERNS = "/**"
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 class SinglePageAppConfig(
-        webProperties: WebProperties,
-        private val frontControllerHandler: FrontControllerHandler,
-        private val applicationContext: ApplicationContext
+    webProperties: WebProperties,
+    private val frontControllerHandler: FrontControllerHandler,
+    private val applicationContext: ApplicationContext
 ) : WebMvcConfigurer {
 
     private val staticLocations: Array<String> = webProperties.resources.staticLocations
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler(PATH_PATTERNS)
-                .addResourceLocations(*staticLocations)
-                .resourceChain(true)
-                .addResolver(SinglePageAppResourceResolver())
+            .addResourceLocations(*staticLocations)
+            .resourceChain(true)
+            .addResolver(SinglePageAppResourceResolver())
     }
 
     private inner class SinglePageAppResourceResolver : PathResourceResolver() {
@@ -46,12 +46,12 @@ class SinglePageAppConfig(
 
         init {
             this.frontControllerResource = Arrays
-                    .stream(staticLocations)
-                    .map { path -> applicationContext.getResource(path + FRONT_CONTROLLER) }
-                    .filter(this::resourceExistsAndIsReadable)
-                    .findFirst()
-                    .map(frontControllerHandler::buildFrontControllerResource)
-                    .orElseGet { null }
+                .stream(staticLocations)
+                .map { path -> applicationContext.getResource(path + FRONT_CONTROLLER) }
+                .filter(this::resourceExistsAndIsReadable)
+                .findFirst()
+                .map(frontControllerHandler::buildFrontControllerResource)
+                .orElseGet { null }
         }
 
         override fun getResource(resourcePath: String, location: Resource): Resource? {
