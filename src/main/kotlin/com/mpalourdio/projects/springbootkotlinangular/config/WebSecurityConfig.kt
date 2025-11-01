@@ -23,7 +23,6 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 class WebSecurityConfig {
 
     @Bean
-    @Throws(Exception::class)
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain? {
         val tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse()
         tokenRepository.setCookieCustomizer { c -> c.secure(true).sameSite(Cookie.SameSite.STRICT.attributeValue()) }
@@ -40,7 +39,6 @@ class WebSecurityConfig {
 
     @Bean
     @Order(-1)
-    @Throws(Exception::class)
     fun staticResources(http: HttpSecurity): SecurityFilterChain {
         http {
             securityMatcher("/static/**")
