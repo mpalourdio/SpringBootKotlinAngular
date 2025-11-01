@@ -69,7 +69,6 @@ class SinglePageAppConfig(
 
             //we are in the case of an angular route here, we rewrite to index.html
             return if (resourceExistsAndIsReadable(location.createRelative(FRONT_CONTROLLER))) frontControllerResource else null
-
         }
 
         private fun resourceExistsAndIsReadable(resource: Resource): Boolean = resource.exists() && resource.isReadable
