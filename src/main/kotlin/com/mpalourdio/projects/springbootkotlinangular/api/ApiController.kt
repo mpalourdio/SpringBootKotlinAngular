@@ -11,7 +11,7 @@ package com.mpalourdio.projects.springbootkotlinangular.api
 
 import com.mpalourdio.projects.springbootkotlinangular.config.IGNORED_PATH
 import org.apache.commons.lang3.StringUtils
-import org.springframework.boot.autoconfigure.web.ServerProperties
+import org.springframework.boot.web.server.autoconfigure.ServerProperties
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.reactive.function.client.WebClient

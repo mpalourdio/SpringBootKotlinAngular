@@ -11,7 +11,7 @@ class SpaCsrfTokenRequestHandler : CsrfTokenRequestHandler {
     private val plain: CsrfTokenRequestResolver = CsrfTokenRequestAttributeHandler()
     private val xor: CsrfTokenRequestHandler = XorCsrfTokenRequestAttributeHandler()
 
-    override fun handle(request: HttpServletRequest?, response: HttpServletResponse?, csrfToken: Supplier<CsrfToken?>) {
+    override fun handle(request: HttpServletRequest, response: HttpServletResponse, csrfToken: Supplier<CsrfToken>) {
         /*
          * Always use XorCsrfTokenRequestAttributeHandler to provide BREACH protection of
          * the CsrfToken when it is rendered in the response body.
